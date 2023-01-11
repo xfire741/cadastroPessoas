@@ -7,7 +7,7 @@ eduardovictor28@gmail.com
 
 Link do projeto no Git: https://github.com/xfire741/cadastroPessoas
 
-EndPoint:<br>
+EndPoints:<br>
 Buscar Pessoa → GET/ localhost:8080/pessoas/{idPessoa}<br>
 Listar Pessoas→ GET/ localhost:8080/pessoas<br>
 Salvar Pessoa → POST/ localhost:8080/pessoas<br>
