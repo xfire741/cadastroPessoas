@@ -29,6 +29,15 @@ public class Pessoa {
 	@Column(nullable = false)
 	private LocalDate nascimento;
 	
+	public Pessoa() {
+	}
+	
+	public Pessoa(Long id, String nome, LocalDate nascimento) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.nascimento = nascimento;
+	}
 
 	public Long getId() {
 		return id;

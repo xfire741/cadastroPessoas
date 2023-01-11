@@ -16,13 +16,38 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Endereco {
 	
+	public Endereco() {
+		
+	}
+	
+	public Endereco(Long id, String logradouro, String cep, String numero, Pessoa pessoa, String cidade) {
+		this.id = id;
+		this.cidade = cidade;
+		this.logradouro = logradouro;
+		this.cep = cep;
+		this.numero = numero;
+		this.pessoa = pessoa;
+		this.principal = false;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false)
+	private String cidade;
+	
+	@Column(nullable = false)
 	private String logradouro;
 	
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
 	@Column(nullable = false)
 	private String cep;
 	
@@ -31,7 +56,6 @@ public class Endereco {
 	
 	private Boolean principal;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id", nullable = false)
 	private Pessoa pessoa;
