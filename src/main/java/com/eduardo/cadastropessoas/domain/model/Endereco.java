@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Endereco {
@@ -26,6 +29,9 @@ public class Endereco {
 	@Column(nullable = false)
 	private String numero;
 	
+	private Boolean principal;
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id", nullable = false)
 	private Pessoa pessoa;
@@ -68,6 +74,15 @@ public class Endereco {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}
+	
+
+	public Boolean getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(Boolean principal) {
+		this.principal = principal;
 	}
 
 	@Override
