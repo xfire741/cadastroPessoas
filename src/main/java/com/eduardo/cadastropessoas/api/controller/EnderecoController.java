@@ -3,6 +3,7 @@ package com.eduardo.cadastropessoas.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,14 @@ public class EnderecoController {
 	
 	@PostMapping
 	public Endereco adicionar(@RequestBody Endereco endereco) {
+		
+		List<Endereco> enderecos = listar();
+		
+		try {
+		return enderecoCadastro.salvar(endereco);
+		} catch (DataIntegrityViolationException e) {
+			endereco.setId(new Long(enderecos.size() + 1));
+		}
 		return enderecoCadastro.salvar(endereco);
 	}
 	
